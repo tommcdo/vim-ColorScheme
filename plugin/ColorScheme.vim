@@ -1,5 +1,6 @@
-function! ColorScheme(cs)
+function! s:ColorScheme(cs)
 	if !exists('g:ColorScheme_commands')
+		exec 'colorscheme '.a:cs
 		return
 	endif
 	let cmds = get(g:ColorScheme_commands, a:cs, {})
@@ -14,4 +15,4 @@ function! ColorScheme(cs)
 	endfor
 endfunction
 
-command! -nargs=1 -complete=color ColorScheme call ColorScheme('<args>')
+command! -nargs=1 -complete=color ColorScheme call <SID>ColorScheme('<args>')
